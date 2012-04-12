@@ -1,7 +1,4 @@
 module Ranked
-  class User < Sequel::Model
-    plugin :optimistic_locking
-    plugin :timestamps
-
+  class Player < Sequel::Model
   end
 end
