@@ -1,4 +1,4 @@
-module Ladder
+module Ranked
   module Log
 
     def self.notice(*data, &block)

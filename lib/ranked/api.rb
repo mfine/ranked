@@ -3,7 +3,7 @@ require "haml"
 require "sinatra"
 require "sinatra/google-auth"
 
-module Ladder
+module Ranked
   class Api < Sinatra::Base
     register Sinatra::GoogleAuth
     disable :show_exceptions, :dump_errors, :logging

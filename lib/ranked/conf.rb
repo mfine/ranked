@@ -1,10 +1,10 @@
 require "ladder/error"
 
-module Ladder
+module Ranked
   module Conf
 
     def self.env
-      [:lock_id, :database_url, :schedule_limit, :schedule_sleep, :heroku_username, :heroku_password, :sso_salt, :port]
+      [:database_url, :port]
     end
 
     def self.method_missing(m, *args)

@@ -1,4 +1,4 @@
-module Ladder
+module Ranked
 
   class MissingConf < StandardError
   end
