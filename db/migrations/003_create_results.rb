@@ -2,7 +2,8 @@ Sequel.migration do
   up do
     create_table(:results) do
       primary_key :id
-#     column :attrs, :hstore
+      Integer :winner_id
+      Integer :loser_id
     end
   end
   down do
