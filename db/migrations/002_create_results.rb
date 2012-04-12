@@ -2,10 +2,12 @@ Sequel.migration do
   up do
     create_table(:results) do
       primary_key :id
-      Integer :winner_id
-      Integer :loser_id
+      column :at, DateTime
+      column :winner_id, "integer"
+      column :loser_id, "integer"
     end
   end
+
   down do
     drop_table(:results)
   end

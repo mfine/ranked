@@ -1,5 +1,3 @@
-require "sequel"
-require "queue_classic"
 require "irb"
 require "task"
 

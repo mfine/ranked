@@ -1,5 +1,14 @@
 .container
-	%h1
-		Bootstrap starter template
-	%p
-		Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.
+
+%table.table.table-condensed.table-striped
+  %thead
+    %tr
+      %th At
+      %th Winner
+      %th Loser
+  %tbody
+    - @results.each do |result|
+      %tr
+        %td= result.at
+        %td= result.winner_user
+        %td= result.loser_user

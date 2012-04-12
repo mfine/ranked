@@ -1,5 +1,5 @@
 module Ranked
 
-  autoload :User, "ranked/user"
-  autoload :Event, "ranked/event"
+  autoload :Player, "ranked/player"
+  autoload :Result, "ranked/result"
 end

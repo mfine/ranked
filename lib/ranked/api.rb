@@ -3,6 +3,8 @@ require "haml"
 require "sinatra"
 require "sinatra/google-auth"
 
+require "ranked/ranking"
+
 module Ranked
   class Api < Sinatra::Base
     register Sinatra::GoogleAuth
@@ -24,16 +26,19 @@ module Ranked
 
     get "/" do
       authenticate
+      @players = Ranking.ladder
       haml :index
     end
 
     get "/players" do
       authenticate
+      @players = Player.all
       haml :players
     end
 
     get "/results" do
       authenticate
+      @results = Result.all
       haml :results
     end
 

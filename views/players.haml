@@ -1,5 +1,10 @@
 .container
-	%h1
-		Bootstrap starter template
-	%p
-		Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.
+
+%table.table.table-condensed.table-striped
+  %thead
+    %tr
+      %th User
+  %tbody
+    - @players.each do |player|
+      %tr
+        %td= player.user
