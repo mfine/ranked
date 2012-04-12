@@ -1,5 +1,5 @@
 module Ranked
-  class Event < Sequel::Model
+  class Result < Sequel::Model
     plugin :optimistic_locking
     plugin :timestamps
 

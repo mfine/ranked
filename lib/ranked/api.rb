@@ -18,14 +18,23 @@ module Ranked
       end
     end
 
-    get "/users" do
-      authenticate
+    before do
       @user = session['user']
-      haml :users
     end
 
     get "/" do
+      authenticate
       haml :index
+    end
+
+    get "/players" do
+      authenticate
+      haml :players
+    end
+
+    get "/results" do
+      authenticate
+      haml :results
     end
 
     error do
