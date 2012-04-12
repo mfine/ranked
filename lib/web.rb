@@ -1,7 +1,7 @@
 require "unicorn"
 require "task"
 
-require "ladder/api"
+require "ranked/api"
 
 module Web
   extend Task

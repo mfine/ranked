@@ -1,4 +1,4 @@
-require "ladder/error"
+require "ranked/error"
 
 module Ranked
   module Conf

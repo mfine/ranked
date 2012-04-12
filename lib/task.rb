@@ -1,8 +1,8 @@
 require "sequel"
 
-require "ladder/log"
-require "ladder/conf"
-require "ladder/autoload"
+require "ranked/log"
+require "ranked/conf"
+require "ranked/autoload"
 
 module Task
   include Ranked

@@ -1,5 +1,5 @@
 module Ranked
 
-  autoload :User, "ladder/user"
-  autoload :Event, "ladder/event"
+  autoload :User, "ranked/user"
+  autoload :Event, "ranked/event"
 end
