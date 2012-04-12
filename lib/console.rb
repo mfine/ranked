@@ -5,7 +5,7 @@ require "task"
 
 module Console
   extend Task
-  include Ladder
+  include Ranked
 
   def self.main
     IRB.start

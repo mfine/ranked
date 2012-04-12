@@ -5,7 +5,7 @@ require "ladder/conf"
 require "ladder/autoload"
 
 module Task
-  include Ladder
+  include Ranked
 
   def db
     @db ||= Sequel.connect(Conf.database_url)

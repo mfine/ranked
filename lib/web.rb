@@ -5,7 +5,7 @@ require "ladder/api"
 
 module Web
   extend Task
-  include Ladder
+  include Ranked
 
   def self.server
     @server ||= Unicorn::HttpServer.new(Api, listeners: ["0.0.0.0:#{Conf.port}"], worker_processes: 1, timeout: 30)
