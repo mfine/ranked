@@ -1,4 +1,17 @@
-### Todo
+# RankeD
 
-+ players.haml takes a create button. Creates a player for logged in user.
-+ results.haml takes a create button: winner, loser.
+Track results, rank people.
+
+### Installing
+
+```bash
+$ createdb ranked-dev
+$ bundle exec sequel -m db/migrations postgres://localhost/ranked-dev
+```
+
+### Running
+
+```bash
+$ cp sample.env .env
+$ foreman start
+```
