@@ -42,6 +42,15 @@ module Ranked
       haml :players
     end
 
+    get "/players/:id" do |id|
+      authenticate
+      @player = Player.find(:id => id)
+      @wins   = Result.filter(:winner_id => id).count
+      @losses = Result.filter(:loser_id  => id).count
+      @recent = Result.filter({:winner_id => id, :loser_id => id}.sql_or).limit(10)
+      haml :player
+    end
+
     get "/results" do
       authenticate
       @results = Result.all

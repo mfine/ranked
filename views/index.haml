@@ -9,4 +9,5 @@
       - @players.each_with_index do |player, i|
         %tr
           %td= "##{i+1}"
-          %td= player.user
+          %td
+            %a{:href=>"/players/#{player.id}"}= player.user

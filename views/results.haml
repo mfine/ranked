@@ -18,5 +18,7 @@
       - @results.each do |result|
         %tr
           %td= result.at
-          %td= result.winner_user
-          %td= result.loser_user
+          %td
+            %a{:href=>"/players/#{result.winner_id}"}= result.winner_user
+          %td
+            %a{:href=>"/players/#{result.loser_id}"}= result.loser_user

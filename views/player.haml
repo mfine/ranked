@@ -1,0 +1,20 @@
+.container
+  
+  %h2= @player.user
+
+  %span.label.label-success= "#{@wins} wins"
+  %span.label.label-important= "#{@losses} losses"
+
+.container
+  %h3 Recently
+
+  %table.table.table-condensed.table-striped
+    %tr
+      %th Date
+      %th Against
+      %th Result
+    - @recent.each do |result|
+      %tr
+        %td= result.at
+        %td= result.oponent(@player)
+        %td= result.result(@player)

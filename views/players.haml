@@ -7,4 +7,5 @@
     %tbody
       - @players.each do |player|
         %tr
-          %td= player.user
+          %td
+            %a{:href=>"/players/#{player.id}"}= player.user

@@ -8,5 +8,16 @@ module Ranked
     def loser_user
       Player[loser_id].user
     end
+
+    def oponent(player)
+      [winner_user, loser_user].reject { |p| p == player }.first
+    end
+
+    def result(player)
+      {
+        winner_id => "win",
+        loser_id  => "loss",
+      }[player.id]
+    end
   end
 end
