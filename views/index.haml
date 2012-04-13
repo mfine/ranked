@@ -1,10 +1,12 @@
 .container
 
-%table.table.table-condensed.table-striped
-  %thead
-    %tr
-      %th User
-  %tbody
-    - @players.each do |player|
+  %table.table.table-condensed.table-striped
+    %thead
       %tr
-        %td= player.user
+        %td Rank
+        %th User
+    %tbody
+      - @players.each_with_index do |player, i|
+        %tr
+          %td= "##{i+1}"
+          %td= player.user

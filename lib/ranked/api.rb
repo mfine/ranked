@@ -18,10 +18,16 @@ module Ranked
       def data
         @data ||= JSON.parse(request.body.read)
       end
+
+      def link_class(path)
+        return "active" if request.path_info == path
+      end
     end
 
     before do
-      @user = session['user']
+      if user = session['user']
+        @user = Player.find_or_create(:user => user)
+      end
     end
 
     get "/" do
@@ -40,6 +46,11 @@ module Ranked
       authenticate
       @results = Result.all
       haml :results
+    end
+
+    post "/results" do
+      Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
+      redirect "/"
     end
 
     error do

@@ -1,10 +1,10 @@
 .container
 
-%table.table.table-condensed.table-striped
-  %thead
-    %tr
-      %th User
-  %tbody
-    - @players.each do |player|
+  %table.table.table-condensed.table-striped
+    %thead
       %tr
-        %td= player.user
+        %th User
+    %tbody
+      - @players.each do |player|
+        %tr
+          %td= player.user
