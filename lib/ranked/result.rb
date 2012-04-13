@@ -10,14 +10,11 @@ module Ranked
     end
 
     def oponent(player)
-      [winner_user, loser_user].reject { |p| p == player }.first
+      [winner_user, loser_user].reject { |p| p == player.user }.first
     end
 
     def result(player)
-      {
-        winner_id => "win",
-        loser_id  => "loss",
-      }[player.id]
+      { winner_id => "win", loser_id  => "loss" }[player.id]
     end
   end
 end

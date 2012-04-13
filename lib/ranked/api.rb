@@ -36,12 +36,6 @@ module Ranked
       haml :index
     end
 
-    get "/players" do
-      authenticate
-      @players = Player.all
-      haml :players
-    end
-
     get "/players/:id" do |id|
       authenticate
       @player = Player.find(:id => id)
