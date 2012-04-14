@@ -1,16 +1,14 @@
-.container
-
-  %table.table.table-condensed.table-striped
-    %thead
+%table.table.table-condensed.table-striped
+  %thead
+    %tr
+      %th At
+      %th Winner
+      %th Loser
+  %tbody
+    - @results.each do |result|
       %tr
-        %th At
-        %th Winner
-        %th Loser
-    %tbody
-      - @results.each do |result|
-        %tr
-          %td= result.at
-          %td
-            %a{:href=>"/players/#{result.winner_id}"}= result.winner_user
-          %td
-            %a{:href=>"/players/#{result.loser_id}"}= result.loser_user
+        %td= result.at
+        %td
+          %a{:href=>"/players/#{result.winner_id}"}= result.winner_user
+        %td
+          %a{:href=>"/players/#{result.loser_id}"}= result.loser_user
