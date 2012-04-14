@@ -1,5 +1,15 @@
 .container
 
+  %div.well
+    %h4 Post result:
+    %form.form-inline{:method=>"post", :action=>"/results", :style=>"margin-bottom: 0;"}
+      %select{:name=>"winner_id"}
+        - Ranked::Player.order(:user).all.each do |player|
+          - next if player == @user
+          %option{:value=>player.id}= player.user
+
+      %input.btn.btn-primary{:type=>"submit", :value=>"Just beat me"}
+
   %table.table.table-condensed.table-striped
     %thead
       %tr
