@@ -1,3 +1,7 @@
+- if params[:posted]
+  %div.alert.alert-success
+    Result posted! Better luck next time :{
+
 %div.well
   %h4 Post result:
   %form.form-inline{:method=>"post", :action=>"/results", :style=>"margin-bottom: 0;"}

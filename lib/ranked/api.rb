@@ -53,7 +53,7 @@ module Ranked
 
     post "/results" do
       Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
-      redirect "/"
+      redirect "/?posted=1"
     end
 
     error do
