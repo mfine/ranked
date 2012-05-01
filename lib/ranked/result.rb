@@ -9,7 +9,7 @@ module Ranked
       Player[loser_id].name
     end
 
-    def oponent(player)
+    def opponent(player)
       [winner_name, loser_name].reject { |p| p == player.name }.first
     end
 
