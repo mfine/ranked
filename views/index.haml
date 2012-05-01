@@ -6,9 +6,10 @@
   %h4 Post result:
   %form.form-inline{:method=>"post", :action=>"/results", :style=>"margin-bottom: 0;"}
     %select{:name=>"winner_id"}
+      %option{:value=> nil}
       - Ranked::Player.order(:user).all.each do |player|
         - next if player == @user
-        %option{:value=>player.id}= player.user
+        %option{:value=>player.id}= player.display_name
 
     %input.btn.btn-primary{:type=>"submit", :value=>"Just beat me"}
 
@@ -22,4 +23,4 @@
       %tr
         %td= "##{i+1}"
         %td
-          %a{:href=>"/players/#{player.id}"}= player.name
+          %a{:href=>"/players/#{player.id}"}= player.display_name
