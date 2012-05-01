@@ -61,6 +61,11 @@ module Ranked
     end
 
     post "/results" do
+      if params[:winner_id].nil? || params[:winner_id] == ""
+        redirect '/'
+      elsif !Player[params[:winner_id]]
+        return 422
+      end
       Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
       redirect "/?posted=1"
     end
