@@ -27,7 +27,16 @@ module Ranked
     before do
       if user = session['user']
         @user = Player.find_or_create(:user => user)
+        unless @user.name
+          @user.update(:name => session['name'])
+        end
       end
+    end
+
+    def on_user(info)
+      session["first_name"] = info.first_name
+      session["last_name"] = info.last_name
+      session["name"] = info.name
     end
 
     get "/" do
