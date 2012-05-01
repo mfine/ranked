@@ -1,16 +1,16 @@
 module Ranked
   class Result < Sequel::Model
 
-    def winner_user
-      Player[winner_id].user
+    def winner_name
+      Player[winner_id].name
     end
 
-    def loser_user
-      Player[loser_id].user
+    def loser_name
+      Player[loser_id].name
     end
 
     def oponent(player)
-      [winner_user, loser_user].reject { |p| p == player.user }.first
+      [winner_name, loser_name].reject { |p| p == player.name }.first
     end
 
     def result(player)
