@@ -9,6 +9,6 @@
       %tr
         %td= result.at
         %td
-          %a{:href=>"/players/#{result.winner_id}"}= result.winner_name
+          %a{:href=>"/players/#{result.winner_id}"}= result.winner.display_name
         %td
-          %a{:href=>"/players/#{result.loser_id}"}= result.loser_name
+          %a{:href=>"/players/#{result.loser_id}"}= result.loser.display_name
