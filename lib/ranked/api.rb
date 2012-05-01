@@ -4,11 +4,12 @@ require "sinatra"
 require "sinatra/google-auth"
 
 require "ranked/ranking"
+require "ranked/campfire"
 
 module Ranked
   class Api < Sinatra::Base
     register Sinatra::GoogleAuth
-    disable :show_exceptions, :dump_errors, :logging
+    disable :logging
     set :root, Dir.getwd
     set :public_folder, "public"
     set :views, "views"
@@ -66,7 +67,8 @@ module Ranked
       elsif !Player[params[:winner_id]]
         return 422
       end
-      Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
+      result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
+      Campfire.say ":vs: #{result.winner.display_name} just beat #{result.loser.display_name}"
       redirect "/?posted=1"
     end
 
