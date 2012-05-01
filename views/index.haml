@@ -8,7 +8,7 @@
     %select{:name=>"winner_id"}
       - Ranked::Player.order(:user).all.each do |player|
         - next if player == @user
-        %option{:value=>player.id}= player.user
+        %option{:value=>player.id}= player.display_name
 
     %input.btn.btn-primary{:type=>"submit", :value=>"Just beat me"}
 
@@ -22,4 +22,4 @@
       %tr
         %td= "##{i+1}"
         %td
-          %a{:href=>"/players/#{player.id}"}= player.name
+          %a{:href=>"/players/#{player.id}"}= player.display_name
