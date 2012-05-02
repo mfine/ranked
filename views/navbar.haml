@@ -10,6 +10,8 @@
 				%ul.nav
 					%li{:class => link_class("/results")}
 						%a{:href => '/results'}Results
+					%li{:class => link_class("/elo")}
+						%a{:href => '/results'}Elo
 				%ul.nav.pull-right
 					%li
 						%a= @user.name || @user.user
