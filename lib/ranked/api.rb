@@ -15,6 +15,12 @@ module Ranked
     set :views, "views"
     set :haml, format: :html5
 
+    def on_user(info)
+      session['first_name'] = info.first_name
+      session['last_name'] = info.last_name
+      session['name'] = info.name
+    end
+
     helpers do
       def data
         @data ||= JSON.parse(request.body.read)
@@ -28,16 +34,8 @@ module Ranked
     before do
       if user = session['user']
         @user = Player.find_or_create(:user => user)
-        unless @user.name
-          @user.update(:name => session['name'])
-        end
+        @user.update(:name => session['name']) unless @user.name
       end
-    end
-
-    def on_user(info)
-      session["first_name"] = info.first_name
-      session["last_name"] = info.last_name
-      session["name"] = info.name
     end
 
     get "/" do
@@ -62,14 +60,13 @@ module Ranked
     end
 
     post "/results" do
-      if params[:winner_id].nil? || params[:winner_id] == ""
-        redirect '/'
-      elsif !Player[params[:winner_id]]
-        return 422
+      if !params[:winner_id] || params[:winner_id] == "" || !Player[params[:winner_id]]
+        422
+      else
+        @result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
+        Campfire.say_result(@result)
+        redirect "/?posted=1"
       end
-      result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
-      Campfire.say ":vs: #{result.winner.display_name} just beat #{result.loser.display_name}"
-      redirect "/?posted=1"
     end
 
     error do
