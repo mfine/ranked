@@ -4,7 +4,7 @@ module Ranked
   module Conf
 
     def self.env
-      [:database_url, :port, :campfire_token]
+      [:database_url, :port, :campfire_url]
     end
 
     def self.method_missing(m, *args)
