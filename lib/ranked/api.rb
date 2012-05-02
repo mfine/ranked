@@ -61,7 +61,7 @@ module Ranked
 
     get "/results" do
       authenticate
-      @results = Result.all
+      @results = Result.order(:at).all
       haml :results
     end
 
