@@ -2,7 +2,7 @@ module Ranked
   module Log
 
     def self.notice(*data, &block)
-      message = "file=#{file} fun=#{fun} #{format(*data)}"
+      message = "app=ranked file=#{file} fun=#{fun} #{format(*data)}"
       if block
         start = Time.now
         result = yield
@@ -36,8 +36,9 @@ module Ranked
             when Float
               "#{k}=#{format("%.3f", v)}"
             else
-              "#{k}=#{v.to_s}"
-              end
+              v_s = v.to_s
+              v_s.match(/\s/) ? "#{k}=\"#{v_s}\"" : "#{k}=#{v_s}"
+            end
           end.compact.join(" ")
         else
           d.to_s
