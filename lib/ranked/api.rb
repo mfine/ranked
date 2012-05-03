@@ -72,8 +72,8 @@ module Ranked
         @result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
         Campfire.say_result(@result)
         Log.notice event: "result", winner: @result.winner.display_name, loser: @result.loser.display_name
-        Ranking.ladder.each_with_index { |player, i| Log.notice event: "ladder", player: player.display_name, rank: i }
-        Ranking.elo.each_with_index { |player, i| Log.notice event: "elo", player: player.display_name, rank: i }
+        Ranking.ladder.each_with_index { |player, i| Log.notice event: "ladder", player: player.display_name, rank: i+1 }
+        Ranking.elo.each_with_index { |player, i| Log.notice event: "elo", player: player.display_name, rank: i+1 }
         redirect "/?posted=1"
       end
     end
