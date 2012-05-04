@@ -15,5 +15,6 @@
     %tr
       %td= result.time
       %td
+        %img{:src=> result.opponent(@player).gravatar}
         %a{:href=>"/players/#{result.opponent(@player).id}"}= result.opponent(@player).display_name
       %td= result.result(@player)
