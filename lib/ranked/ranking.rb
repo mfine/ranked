@@ -34,7 +34,10 @@ module Ranked
           (games[r.loser_id] < 30 ? 30 : 15) * (w_expected - 1.0)
       end
       
-      players.sort { |a,b| b[1] <=> a[1] }.map { |id, rating| Player[id] }
+      players.sort { |a,b| b[1] <=> a[1] }.map do |id, rating|
+        p = Player[id]
+        p
+      end
     end
 
   end
