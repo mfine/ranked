@@ -1,5 +1,11 @@
+require "tzinfo"
+
 module Ranked
   class Result < Sequel::Model
+
+    def self.tz
+      @tz ||= TZInfo::Timezone.get("America/Los_Angeles")
+    end
 
     def loser
       @loser ||= Player[loser_id]
@@ -26,7 +32,7 @@ module Ranked
     end
 
     def time
-      at
+      self.tz.utc_to_local(at)
     end
   end
 end
