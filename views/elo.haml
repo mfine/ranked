@@ -23,6 +23,6 @@
     - @players.each_with_index do |player, i|
       %tr
         %td= "##{i+1}"
-        %td= player.rating
+        %td= player.rating.round
         %td
           %a{:href=>"/players/#{player.id}"}= player.display_name
