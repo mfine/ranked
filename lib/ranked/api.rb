@@ -50,12 +50,6 @@ module Ranked
       haml :elo
     end
 
-    get "/elo2" do
-      authenticate
-      @players = Ranking.elo2
-      haml :elo
-    end
-
     get "/players/:id" do |id|
       authenticate
       @player = Player.find(:id => id)
@@ -79,7 +73,7 @@ module Ranked
         Campfire.say_result(@result)
         Log.notice event: "result", winner: @result.winner.display_name, loser: @result.loser.display_name
         Ranking.ladder.each_with_index { |player, i| Log.notice event: "ladder", player: player.display_name, rank: i+1 }
-        Ranking.elo.each_with_index { |player, i| Log.notice event: "elo", player: player.display_name, rank: i+1 }
+        Ranking.elo.each_with_index { |player, i| Log.notice event: "elo", player: player.display_name, rank: i+1, rating: player.rating }
         redirect "/?posted=1"
       end
     end
