@@ -14,5 +14,6 @@
   - @recent.each do |result|
     %tr
       %td= result.time
-      %td= result.opponent(@player).display_name
+      %td
+        %a{:href=>"/players/#{result.opponent(@player).id}"}= result.opponent(@player).display_name
       %td= result.result(@player)
