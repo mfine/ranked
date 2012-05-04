@@ -9,6 +9,8 @@
       %tr
         %td= result.at
         %td
+          %img{:src=> result.winner.gravatar}
           %a{:href=>"/players/#{result.winner_id}"}= result.winner.display_name
         %td
+          %img{:src=> result.loser.gravatar}
           %a{:href=>"/players/#{result.loser_id}"}= result.loser.display_name
