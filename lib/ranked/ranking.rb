@@ -36,6 +36,7 @@ module Ranked
       
       players.sort { |a,b| b[1] <=> a[1] }.map do |id, rating|
         p = Player[id]
+        p.rating = rating
         p
       end
     end
