@@ -28,7 +28,7 @@ module Ranked
     end
 
     def time
-      TZInfo::Timezone.get("America/Los_Angeles").utc_to_local(at).strftime("%I:%M %p %b %d %y")
+      TZInfo::Timezone.get("America/Los_Angeles").utc_to_local(at).strftime("%b %d %y %I:%M %p")
     end
   end
 end
