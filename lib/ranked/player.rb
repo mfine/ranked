@@ -9,7 +9,7 @@ module Ranked
     end
 
     def gravatar
-      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user)}.png?s=24"
+      "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(user)}.png?s=20"
     end
   end
 end
