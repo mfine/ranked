@@ -47,7 +47,7 @@ module Ranked
     get "/elo" do
       authenticate
       @players = Ranking.elo
-      haml :index
+      haml :elo
     end
 
     get "/players/:id" do |id|
