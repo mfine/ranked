@@ -68,6 +68,9 @@ module Ranked
     post "/results" do
       if !params[:winner_id] || params[:winner_id] == "" || !Player[params[:winner_id]]
         redirect "/"
+      elsif params[:winner_id].to_i == @user.id
+        # No, you can't beat yourself.
+        redirect "/"
       else
         @result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
         Campfire.say_result(@result)
