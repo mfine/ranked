@@ -26,6 +26,6 @@
         %td= "##{i+1}"
         %td= player.rating.round
         %td
-          %img{:src=> "player.gravatar"}
+          %img{:src=> player.gravatar}
         %td
           %a{:href=>"/players/#{player.id}"}= player.display_name
