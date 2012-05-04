@@ -55,7 +55,7 @@ module Ranked
       @player = Player.find(:id => id)
       @wins   = Result.filter(:winner_id => id).count
       @losses = Result.filter(:loser_id  => id).count
-      @recent = Result.filter({:winner_id => id, :loser_id => id}.sql_or).limit(10)
+      @recent = Result.filter({:winner_id => id, :loser_id => id}.sql_or).reverse_order(:at).all
       haml :player
     end
 
