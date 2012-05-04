@@ -1,3 +1,5 @@
+require "elo"
+
 module Ranked
   module Ranking
 
@@ -37,6 +39,21 @@ module Ranked
       players.sort { |a,b| b[1] <=> a[1] }.map do |id, rating|
         p = Player[id]
         p.rating = rating
+        p
+      end
+    end
+
+    def self.elo2
+      players = Hash.new
+      Result.order(:at).each do |r|
+        players[r.winner_id] = Elo::Player.new unless players[r.winner_id]
+        players[r.loser_id] = Elo::Player.new unless players[r.loser_id]
+        players[r.winner_id].wins_from players[r.loser_id]
+      end
+
+      players.sort { |a,b| b[1].rating <=> a[1].rating }.map do |id, player|
+        p = Player[id]
+        p.rating = player.rating
         p
       end
     end

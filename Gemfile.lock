@@ -5,6 +5,7 @@ GEM
       shotgun
       thin
     daemons (1.1.8)
+    elo (0.1.0)
     eventmachine (0.12.10)
     haml (3.1.2)
     hashie (1.2.0)
@@ -48,6 +49,7 @@ PLATFORMS
 
 DEPENDENCIES
   buckshot
+  elo
   haml
   pg
   sequel

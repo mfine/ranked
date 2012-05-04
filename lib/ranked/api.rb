@@ -50,6 +50,12 @@ module Ranked
       haml :elo
     end
 
+    get "/elo2" do
+      authenticate
+      @players = Ranking.elo2
+      haml :elo
+    end
+
     get "/players/:id" do |id|
       authenticate
       @player = Player.find(:id => id)
