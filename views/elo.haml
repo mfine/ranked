@@ -18,11 +18,13 @@
     %tr
       %th Rank
       %th Rating
+      %th
       %th User
   %tbody
     - @players.each_with_index do |player, i|
       %tr
         %td= "##{i+1}"
         %td= player.rating.round
+        %td= image_tag(player.gravatar)
         %td
           %a{:href=>"/players/#{player.id}"}= player.display_name
