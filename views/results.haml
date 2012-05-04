@@ -7,7 +7,7 @@
   %tbody
     - @results.each do |result|
       %tr
-        %td= result.at
+        %td= result.time
         %td
           %img{:src=> result.winner.gravatar}
           %a{:href=>"/players/#{result.winner_id}"}= result.winner.display_name

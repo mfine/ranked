@@ -18,11 +18,15 @@ module Ranked
     end
 
     def opponent(player)
-      [winner, loser].find { |p| p != player }.display_name
+      [winner, loser].find { |p| p != player }
     end
 
     def result(player)
       { winner_id => "win", loser_id  => "loss" }[player.id]
+    end
+
+    def time
+      at
     end
   end
 end

@@ -13,6 +13,6 @@
     %th Result
   - @recent.each do |result|
     %tr
-      %td= result.at
-      %td= result.opponent(@player)
+      %td= result.time
+      %td= result.opponent(@player).display_name
       %td= result.result(@player)
