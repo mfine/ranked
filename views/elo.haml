@@ -17,10 +17,12 @@
   %thead
     %tr
       %td Rank
+      %th Rating
       %th User
   %tbody
     - @players.each_with_index do |player, i|
       %tr
         %td= "##{i+1}"
+        %td = "1200"
         %td
           %a{:href=>"/players/#{player.id}"}= player.display_name
