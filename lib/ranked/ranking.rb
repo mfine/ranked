@@ -51,7 +51,8 @@ module Ranked
         players[r.winner_id].wins_from players[r.loser_id]
       end
 
-      players.sort { |a,b| b[1].rating <=> a[1].rating }.map do |id, player|
+#      players.sort { |a,b| b[1].rating <=> a[1].rating }.map do |id, player|
+      players.sort_by { |id, player| player.rating }.map do |id, player|
         p = Player[id]
         p.rating = player.rating
         p
