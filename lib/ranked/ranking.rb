@@ -22,6 +22,11 @@ module Ranked
     end
     
     def self.elo
+      Elo.configure do |config|
+        config.default_k_factor = 15
+        config.use_FIDE_settings = false
+        config.default_rating = 800
+      end
       players = {}
       Result.order(:at).each do |r|
         players[r.winner_id] = Elo::Player.new unless players[r.winner_id]
