@@ -1,10 +1,9 @@
-%select{:name=>"winner_id"}
-  %option{:value=> nil}
-  - Ranked::Player.active.order(:name).all.each do |player|
-    - next if player == @user
-    %option{:value=>player.id}= player.display_name
-  %option{:value=> nil, :disabled=> true}= "--------------"
-  - Ranked::Player.inactive.order(:name).all.each do |player|
-    - next if player == @user
-    %option{:value=>player.id}= player.display_name
+%option{:value=> nil}
+- Ranked::Player.active.order(:name).all.each do |player|
+  - next if player == @user
+  %option{:value=>player.id}= player.display_name
+%option{:value=> nil, :disabled=> true}= "--------------"
+- Ranked::Player.inactive.order(:name).all.each do |player|
+  - next if player == @user
+  %option{:value=>player.id}= player.display_name
 

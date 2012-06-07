@@ -1,11 +1,13 @@
 - if params[:posted]
   %div.alert.alert-success
-    Result posted! Better luck next time :{
+    Result posted!
 
 %div.well
   %h4 Post result:
   %form.form-inline{:method=>"post", :action=>"/results", :style=>"margin-bottom: 0;"}
-    = haml :dropdown
+    %select{:name=>"winner_id"}
+      = haml :dropdown
+    %input{:type=>"hidden", :name=>"loser_id", :value=>@user.id}
     %input.btn.btn-primary{:type=>"submit", :value=>"Just beat me"}
 
 %table.table.table-condensed.table-striped

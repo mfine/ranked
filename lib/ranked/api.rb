@@ -44,6 +44,12 @@ module Ranked
       haml :index
     end
 
+    get "/scumbag" do
+      authenticate
+      @players = Ranking.ladder
+      haml :scumbag
+    end
+
     get "/elo" do
       authenticate
       @players = Ranking.elo
@@ -66,10 +72,10 @@ module Ranked
     end
 
     post "/results" do
-      if !params[:winner_id] || params[:winner_id] == "" || !Player[params[:winner_id]] || params[:winner_id].to_i == @user.id
+      if !params[:winner_id] || params[:winner_id] == "" || !Player[params[:winner_id]] || !params[:loser_id] || params[:loser_id] == "" || !Player[params[:loser_id]]
         redirect "/"
       else
-        @result = Result.create(:winner_id => params[:winner_id], :loser_id => @user.id, :at => Time.now)
+        @result = Result.create(:winner_id => params[:winner_id], :loser_id => params[:loser_id], :at => Time.now)
         Campfire.say_result(@result)
         Log.notice event: "result", winner: @result.winner.display_name, loser: @result.loser.display_name
         Ranking.ladder.each_with_index { |player, i| Log.notice event: "ladder", player: player.display_name, rank: i+1 }

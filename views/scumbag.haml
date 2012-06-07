@@ -5,22 +5,20 @@
 %div.well
   %h4 Post result:
   %form.form-inline{:method=>"post", :action=>"/results", :style=>"margin-bottom: 0;"}
-    %select{:name=>"winner_id"}
+    %select{:name=>"loser_id"}
       = haml :dropdown
-    %input{:type=>"hidden", :name=>"loser_id", :value=>@user.id}
-    %input.btn.btn-primary{:type=>"submit", :value=>"Just beat me"}
+    %input{:type=>"hidden", :name=>"winner_id", :value=>@user.id}
+    %input.btn.btn-primary{:type=>"submit", :value=>"Just lost to me"}
 
 %table.table.table-condensed.table-striped
   %thead
     %tr
       %th Rank
-      %th Rating
       %th User
   %tbody
     - @players.each_with_index do |player, i|
       %tr
         %td= "##{i+1}"
-        %td= player.rating.round
         %td
           %img{:src=> player.gravatar}
           %a{:href=>"/players/#{player.id}"}= player.display_name
