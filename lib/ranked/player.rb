@@ -13,7 +13,7 @@ module Ranked
     end
 
     def self.active_ids
-      recent = Ranked::Result.filter{at > Time.at(Time.now.to_i - 2*7*24*60*60)}.
+      recent = Ranked::Result.filter{at > Time.at(Time.now.to_i - 4*7*24*60*60)}.
         select_map([:winner_id, :loser_id]).
         flatten.
         uniq

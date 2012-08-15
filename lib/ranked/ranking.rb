@@ -18,9 +18,10 @@ module Ranked
         end
       end
 
-      ladder.map { |i| Player[i] }
+      active_ids = Player.active_ids
+      ladder.map { |i| Player[i] }.select { |r| active_ids.include? r.id }
     end
-    
+
     def self.elo
       Elo.configure do |config|
         config.default_k_factor = 15
@@ -33,7 +34,8 @@ module Ranked
         players[r.winner_id].wins_from players[r.loser_id]
       end
 
-      players.sort_by { |id, player| player.rating }.reverse.map { |id, player| p = Player[id]; p.rating = player.rating; p }
+      active_ids = Player.active_ids
+      players.sort_by { |id, player| player.rating }.reverse.map { |id, player| p = Player[id]; p.rating = player.rating; p }.select { |r| active_ids.include? r.id }
     end
 
   end
